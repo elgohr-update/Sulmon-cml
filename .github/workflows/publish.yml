@@ -41,7 +41,7 @@ jobs:
       # only publish if push to master (dvcorg/cml:latest) 
       # or create a tag in the repo (dvcorg/cml:tag)
       if: github.event_name == 'push' && (contains(github.ref, 'tags') || github.ref == 'refs/heads/master')
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         name: dvcorg/cml
         username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -53,7 +53,7 @@ jobs:
 
     - name: Publish cml-py3 docker image
       if: github.event_name == 'push' && (contains(github.ref, 'tags') || github.ref == 'refs/heads/master')
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-Github-Action@v5
       env:
         DOCKER_FROM: cml
       with:
@@ -68,7 +68,7 @@ jobs:
 
     - name: Publish cml-dev docker image
       if: github.event_name == 'push' && (contains(github.ref, 'tags') || github.ref == 'refs/heads/master')
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         name: dvcorg/cml-dev
         username: ${{ secrets.DOCKERHUB_USERNAME }}
